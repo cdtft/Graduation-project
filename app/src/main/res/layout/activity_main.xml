@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
@@ -8,26 +9,44 @@
     android:weightSum="1"
     tools:context="com.cdut.shici.MainActivity">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:gravity="center"
-        android:orientation="horizontal">
+        android:gravity="center_vertical">
 
         <TextView
+            android:id="@+id/tv_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="当前关数:"
-            android:textSize="25dp" />
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/textview_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/tv_number"
             android:text="0"
             android:textColor="#2A84E8"
-            android:textSize="25dp" />
-    </LinearLayout>
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/textview_rank"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="1"
+            android:textColor="#2A84E8"
+            android:textSize="20sp" />
+        <TextView
+            android:id="@+id/tv_rank"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/textview_rank"
+            android:text="当前排名:"
+            android:textSize="20sp" />
+
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -45,7 +64,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:hint="请找出正确的诗词"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <View
             android:layout_width="match_parent"
@@ -61,68 +80,95 @@
         android:columnCount="3"
         android:rowCount="3">
 
-        <Button
+        <com.dd.CircularProgressButton
             android:id="@+id/button_1"
             android:layout_width="100dp"
             android:layout_height="80dp"
             android:layout_margin="10dp"
-            android:textSize="30sp" />
+            android:textColor="#ffffff"
+            android:textSize="30sp"
+            app:cpb_cornerRadius="48dp"
+            app:cpb_iconComplete="@mipmap/ic_action_accept" />
 
-        <Button
+        <com.dd.CircularProgressButton
             android:id="@+id/button_2"
             android:layout_width="100dp"
             android:layout_height="80dp"
             android:layout_margin="10dp"
-            android:textSize="30sp" />
+            android:textColor="#ffffff"
+            android:textSize="30sp"
+            app:cpb_cornerRadius="48dp"
+            app:cpb_iconComplete="@mipmap/ic_action_accept" />
 
-        <Button
+        <com.dd.CircularProgressButton
             android:id="@+id/button_3"
             android:layout_width="100dp"
             android:layout_height="80dp"
             android:layout_margin="10dp"
-            android:textSize="30sp" />
+            android:textColor="#ffffff"
+            android:textSize="30sp"
+            app:cpb_cornerRadius="48dp"
+            app:cpb_iconComplete="@mipmap/ic_action_accept" />
 
-        <Button
+        <com.dd.CircularProgressButton
             android:id="@+id/button_4"
             android:layout_width="100dp"
             android:layout_height="80dp"
             android:layout_margin="10dp"
-            android:textSize="30sp" />
+            android:textColor="#ffffff"
+            android:textSize="30sp"
+            app:cpb_cornerRadius="48dp"
+            app:cpb_iconComplete="@mipmap/ic_action_accept" />
 
-        <Button
+        <com.dd.CircularProgressButton
             android:id="@+id/button_5"
             android:layout_width="100dp"
             android:layout_height="80dp"
             android:layout_margin="10dp"
-            android:textSize="30sp" />
+            android:textColor="#ffffff"
+            android:textSize="30sp"
+            app:cpb_cornerRadius="48dp"
+            app:cpb_iconComplete="@mipmap/ic_action_accept" />
 
-        <Button
-            android:id="@+id/button_7"
-            android:layout_width="100dp"
-            android:layout_height="80dp"
-            android:layout_margin="10dp"
-            android:textSize="30sp" />
-
-        <Button
-            android:id="@+id/button_8"
-            android:layout_width="100dp"
-            android:layout_height="80dp"
-            android:layout_margin="10dp"
-            android:textSize="30sp" />
-
-        <Button
-            android:id="@+id/button_9"
-            android:layout_width="100dp"
-            android:layout_height="80dp"
-            android:layout_margin="10dp"
-            android:textSize="30sp" />
-
-        <Button
+        <com.dd.CircularProgressButton
             android:id="@+id/button_6"
             android:layout_width="100dp"
             android:layout_height="80dp"
             android:layout_margin="10dp"
-            android:textSize="30sp" />
+            android:textColor="#ffffff"
+            android:textSize="30sp"
+            app:cpb_cornerRadius="48dp"
+            app:cpb_iconComplete="@mipmap/ic_action_accept" />
+
+        <com.dd.CircularProgressButton
+            android:id="@+id/button_7"
+            android:layout_width="100dp"
+            android:layout_height="80dp"
+            android:layout_margin="10dp"
+            android:textColor="#ffffff"
+            android:textSize="30sp"
+            app:cpb_cornerRadius="48dp"
+            app:cpb_iconComplete="@mipmap/ic_action_accept" />
+
+        <com.dd.CircularProgressButton
+            android:id="@+id/button_8"
+            android:layout_width="100dp"
+            android:layout_height="80dp"
+            android:layout_margin="10dp"
+            android:textColor="#ffffff"
+            android:textSize="30sp"
+            app:cpb_cornerRadius="48dp"
+            app:cpb_iconComplete="@mipmap/ic_action_accept" />
+
+        <com.dd.CircularProgressButton
+            android:id="@+id/button_9"
+            android:layout_width="100dp"
+            android:layout_height="80dp"
+            android:layout_margin="10dp"
+            android:textColor="#ffffff"
+            android:textSize="30sp"
+            app:cpb_cornerRadius="48dp"
+            app:cpb_iconComplete="@mipmap/ic_action_accept" />
     </GridLayout>
 
 
