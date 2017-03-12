@@ -38,6 +38,7 @@
             android:text="1"
             android:textColor="#2A84E8"
             android:textSize="20sp" />
+
         <TextView
             android:id="@+id/tv_rank"
             android:layout_width="wrap_content"
@@ -81,23 +82,13 @@
         android:rowCount="3">
 
         <com.dd.CircularProgressButton
-            android:id="@+id/button_1"
-            android:layout_width="100dp"
-            android:layout_height="80dp"
-            android:layout_margin="10dp"
-            android:textColor="#ffffff"
-            android:textSize="30sp"
-            app:cpb_cornerRadius="48dp"
-            app:cpb_iconComplete="@mipmap/ic_action_accept" />
-
-        <com.dd.CircularProgressButton
             android:id="@+id/button_2"
             android:layout_width="100dp"
             android:layout_height="80dp"
             android:layout_margin="10dp"
             android:textColor="#ffffff"
             android:textSize="30sp"
-            app:cpb_cornerRadius="48dp"
+            app:cpb_cornerRadius="10dp"
             app:cpb_iconComplete="@mipmap/ic_action_accept" />
 
         <com.dd.CircularProgressButton
@@ -107,7 +98,7 @@
             android:layout_margin="10dp"
             android:textColor="#ffffff"
             android:textSize="30sp"
-            app:cpb_cornerRadius="48dp"
+            app:cpb_cornerRadius="10dp"
             app:cpb_iconComplete="@mipmap/ic_action_accept" />
 
         <com.dd.CircularProgressButton
@@ -117,7 +108,7 @@
             android:layout_margin="10dp"
             android:textColor="#ffffff"
             android:textSize="30sp"
-            app:cpb_cornerRadius="48dp"
+            app:cpb_cornerRadius="10dp"
             app:cpb_iconComplete="@mipmap/ic_action_accept" />
 
         <com.dd.CircularProgressButton
@@ -127,7 +118,7 @@
             android:layout_margin="10dp"
             android:textColor="#ffffff"
             android:textSize="30sp"
-            app:cpb_cornerRadius="48dp"
+            app:cpb_cornerRadius="10dp"
             app:cpb_iconComplete="@mipmap/ic_action_accept" />
 
         <com.dd.CircularProgressButton
@@ -137,7 +128,7 @@
             android:layout_margin="10dp"
             android:textColor="#ffffff"
             android:textSize="30sp"
-            app:cpb_cornerRadius="48dp"
+            app:cpb_cornerRadius="10dp"
             app:cpb_iconComplete="@mipmap/ic_action_accept" />
 
         <com.dd.CircularProgressButton
@@ -147,7 +138,7 @@
             android:layout_margin="10dp"
             android:textColor="#ffffff"
             android:textSize="30sp"
-            app:cpb_cornerRadius="48dp"
+            app:cpb_cornerRadius="10dp"
             app:cpb_iconComplete="@mipmap/ic_action_accept" />
 
         <com.dd.CircularProgressButton
@@ -157,7 +148,7 @@
             android:layout_margin="10dp"
             android:textColor="#ffffff"
             android:textSize="30sp"
-            app:cpb_cornerRadius="48dp"
+            app:cpb_cornerRadius="10dp"
             app:cpb_iconComplete="@mipmap/ic_action_accept" />
 
         <com.dd.CircularProgressButton
@@ -167,7 +158,17 @@
             android:layout_margin="10dp"
             android:textColor="#ffffff"
             android:textSize="30sp"
-            app:cpb_cornerRadius="48dp"
+            app:cpb_cornerRadius="10dp"
+            app:cpb_iconComplete="@mipmap/ic_action_accept" />
+
+        <com.dd.CircularProgressButton
+            android:id="@+id/button_1"
+            android:layout_width="100dp"
+            android:layout_height="80dp"
+            android:layout_margin="10dp"
+            android:textColor="#ffffff"
+            android:textSize="30sp"
+            app:cpb_cornerRadius="10dp"
             app:cpb_iconComplete="@mipmap/ic_action_accept" />
     </GridLayout>
 
@@ -178,20 +179,23 @@
         android:layout_marginTop="30dp"
         android:gravity="center">
 
-        <Button
+        <com.dd.CircularProgressButton
             android:id="@+id/button_submit"
             android:layout_width="150dp"
             android:layout_height="55dp"
-            android:text="提交"
-
+            app:cpb_textIdle="提交"
             android:textAllCaps="false"
+            app:cpb_iconComplete="@mipmap/ic_action_accept"
+            app:cpb_iconError="@mipmap/ic_action_cancel"
             android:textSize="30sp" />
 
-        <Button
+        <com.dd.CircularProgressButton
             android:id="@+id/button_reset"
             android:layout_width="150dp"
             android:layout_height="55dp"
-            android:text="重置"
+            app:cpb_textIdle="重置"
+            app:cpb_iconComplete="@mipmap/ic_action_accept"
+            app:cpb_iconError="@mipmap/ic_action_cancel"
             android:textAllCaps="false"
             android:textSize="30sp" />
     </LinearLayout>

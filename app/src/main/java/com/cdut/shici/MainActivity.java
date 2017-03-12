@@ -1,5 +1,6 @@
 package com.cdut.shici;
 
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -27,7 +28,7 @@ import cn.bmob.v3.listener.SaveListener;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private CircularProgressButton btn_1, btn_2, btn_3, btn_4, btn_5, btn_6, btn_7, btn_8, btn_9;
-    private Button submit, reset;
+    private CircularProgressButton submit, reset;
     private TextView tv_poetry;
     private StringBuilder poetry;//拼接用户填入的字符便于进行验证
     private Integer number = 1;//当前关数
@@ -45,6 +46,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Bmob.initialize(MainActivity.this, "85de6ff456a4d4331d15542f8a3b4bf9");
         poetry = new StringBuilder();
         initView();
+        initButtonStatus();
         queryPoetry(number);
         setButtonOnClickListener();
     }
@@ -61,8 +63,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn_8 = (CircularProgressButton) findViewById(R.id.button_8);
         btn_9 = (CircularProgressButton) findViewById(R.id.button_9);
         tv_poetry = (TextView) findViewById(R.id.textview_poetry);
-        submit = (Button) findViewById(R.id.button_submit);
-        reset = (Button) findViewById(R.id.button_reset);
+        submit = (CircularProgressButton) findViewById(R.id.button_submit);
+        reset = (CircularProgressButton) findViewById(R.id.button_reset);
         tv_number = (TextView) findViewById(R.id.textview_number);
     }
 
@@ -213,6 +215,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.button_submit:
                 boolean isRight = checkData();
                 if (isRight) {
+                    submit.setProgress(100);
                     queryPoetry(number);
                     tv_poetry.setText("");
                     poetry.delete(0, poetry.length());
@@ -220,6 +223,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     initButtonStatus();
                     initData(poetryBean);
                 } else {
+                    submit.setProgress(-1);
                     tv_poetry.setText("");
                     initButtonStatus();
                     initData(poetryBean);
@@ -229,6 +233,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.button_reset:
                 //TODO 重新初始化按钮的状态
+                reset.setProgress(100);
                 initButtonStatus();
                 initData(poetryBean);
                 poetry.delete(0, poetry.length());
@@ -261,5 +266,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn_7.setProgress(0);
         btn_8.setProgress(0);
         btn_9.setProgress(0);
+        reset.setProgress(0);
+        submit.setProgress(0);
     }
 }

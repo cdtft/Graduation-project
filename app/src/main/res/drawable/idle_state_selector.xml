@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true"
-        android:color="#fff17a0a"/>
-    <item android:state_focused="true"
-        android:color="#fff17a0a"/>
-    <item android:state_enabled="false"
-        android:color="@color/cpb_grey"/>
-    <item android:state_enabled="true"
-        android:color="#fffeaa0c"/>
+    <item android:state_pressed="true">
+        <color android:color="#fff17a0a" />
+    </item>
+    <item android:state_focused="true">
+        <color android:color="#fff17a0a" />
+    </item>
+    <item android:state_enabled="false">
+        <color android:color="@color/cpb_grey" />
+    </item>
+    <item android:color="#fffeaa0c" android:state_enabled="true">
+        <color android:color="#fffeaa0c" />
+    </item>
 </selector>
