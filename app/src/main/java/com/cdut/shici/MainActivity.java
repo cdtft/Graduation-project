@@ -1,35 +1,32 @@
 package com.cdut.shici;
 
-import android.os.SystemClock;
+
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
-import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.cdut.shici.javabean.Poetry;
-import com.cdut.shici.javabean.User;
 import com.dd.CircularProgressButton;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
 import cn.bmob.v3.Bmob;
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.datatype.BmobQueryResult;
 import cn.bmob.v3.exception.BmobException;
-import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.SQLQueryListener;
-import cn.bmob.v3.listener.SaveListener;
+
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private CircularProgressButton btn_1, btn_2, btn_3, btn_4, btn_5, btn_6, btn_7, btn_8, btn_9;
     private CircularProgressButton submit, reset;
     private TextView tv_poetry;
+    private ImageView iv_adb, iv_add, iv_rank, iv_me;
     private StringBuilder poetry;//拼接用户填入的字符便于进行验证
     private Integer number = 1;//当前关数
     private Poetry poetryBean;
@@ -51,6 +48,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setButtonOnClickListener();
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+        finish();
+    }
+
     //初始化控件
     private void initView() {
         btn_1 = (CircularProgressButton) findViewById(R.id.button_1);
@@ -66,6 +69,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         submit = (CircularProgressButton) findViewById(R.id.button_submit);
         reset = (CircularProgressButton) findViewById(R.id.button_reset);
         tv_number = (TextView) findViewById(R.id.textview_number);
+        iv_adb = (ImageView) findViewById(R.id.main_imageView_adb);
+        iv_add = (ImageView) findViewById(R.id.main_imageView_voice);
+        iv_rank = (ImageView) findViewById(R.id.main_imageView_add);
+        iv_me = (ImageView) findViewById(R.id.main_imageView_me);
     }
 
     //对button绑定点击事件
@@ -81,6 +88,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn_9.setOnClickListener(this);
         submit.setOnClickListener(this);
         reset.setOnClickListener(this);
+        iv_adb.setOnClickListener(this);
+        iv_add.setOnClickListener(this);
+        iv_rank.setOnClickListener(this);
+        iv_me.setOnClickListener(this);
     }
 
     //查询诗词
@@ -238,6 +249,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 initData(poetryBean);
                 poetry.delete(0, poetry.length());
                 tv_poetry.setText(poetry);
+                break;
+            case R.id.main_imageView_voice:
+                Intent toVoice = new Intent(MainActivity.this, VoiceActivity.class);
+                startActivity(toVoice);
+                break;
+            case R.id.main_imageView_add:
+                Intent toRank = new Intent(MainActivity.this, RankActivity.class);
+                MainActivity.this.startActivity(toRank);
+                break;
+            case R.id.main_imageView_me:
+                Intent toMe = new Intent(MainActivity.this, MeActivity.class);
+                startActivity(toMe);
                 break;
             default:
                 break;
