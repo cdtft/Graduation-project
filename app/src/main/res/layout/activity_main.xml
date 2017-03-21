@@ -10,6 +10,8 @@
     tools:context="com.cdut.shici.MainActivity">
 
 
+    <include layout="@layout/actionbar"/>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="40dp"

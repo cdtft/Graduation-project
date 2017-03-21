@@ -6,6 +6,8 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import com.stephentuso.welcome.WelcomeHelper;
+
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -14,6 +16,7 @@ import butterknife.OnClick;
  */
 
 public class MeActivity extends AppCompatActivity {
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,4 +52,5 @@ public class MeActivity extends AppCompatActivity {
         super.onStop();
         finish();
     }
+
 }

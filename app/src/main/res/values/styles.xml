@@ -1,14 +1,52 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. @color/colorPrimary -->
+        <item name="colorPrimary">#0099cc</item>
+        <item name="colorPrimaryDark">#0099ee</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
-    <style name="NoTitle" parent="Theme.AppCompat.Light.NoActionBar">
+
+    <style name="NoTitle" parent="Theme.AppCompat.Light">
         <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="WelcomeScreenTheme" parent="Wel_WelcomeScreenBaseTheme">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="welcomeLayoutFitsSystemWindows">true</item>
+        <item name="android:textColorPrimary">@color/wel_text_primary_theme_dark</item>
+        <item name="android:textColorSecondary">@color/wel_text_primary_theme_dark</item>
+
+        <item name="welcomeButtonBackground">@drawable/wel_button_borderless_background</item>
+        <item name="welcomeButtonSkipStyle">@style/WelcomeScreenButton.Skip</item>
+        <item name="welcomeButtonNextStyle">@style/WelcomeScreenButton.Next</item>
+        <item name="welcomeButtonPrevStyle">@style/WelcomeScreenButton.Prev</item>
+        <item name="welcomeButtonDoneStyle">@style/WelcomeScreenButton.Done</item>
+        <item name="welcomeButtonDoneText">@string/wel_done</item>
+        <item name="welcomeButtonSkipText">@string/wel_skip</item>
+        <item name="welcomeButtonBarFirstStyle">@style/WelcomeScreenButton.LogIn</item>
+        <item name="welcomeButtonBarSecondStyle">@style/WelcomeScreenButton.SignUp</item>
+
+        <item name="welcomeButtonBarBackground">@color/wel_button_bar_background_dark</item>
+
+        <item name="welcomeDividerStyle">@style/WelcomeScreenDivider</item>
+        <item name="welcomeIndicatorStyle">@style/WelcomeScreenPageIndicator</item>
+
+        <item name="welcomeNormalTextStyle">@style/WelcomeScreenText</item>
+        <item name="welcomeLargeTextStyle">@style/WelcomeScreenText.Large</item>
+        <item name="welcomeTitleTextStyle">@style/WelcomeScreenText.Title.Centered</item>
+
+        <item name="windowActionBarOverlay">true</item>
+        <item name="actionBarStyle">@style/Wel_TransparentActionBar</item>
+
+        <!-- Make the background transparent, so swipeToDismiss will fade to the activity beneath -->
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:background">@color/wel_transparent</item>
+        <item name="background">@color/wel_transparent</item>
+        <item name="android:windowBackground">@color/wel_transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
     </style>
 
 </resources>

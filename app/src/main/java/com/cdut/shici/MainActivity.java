@@ -4,16 +4,23 @@ package com.cdut.shici;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.cdut.shici.javabean.Poetry;
 import com.dd.CircularProgressButton;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
+import butterknife.BindView;
 import cn.bmob.v3.Bmob;
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.datatype.BmobQueryResult;
@@ -34,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView tv_number;
     private static final int BUTTON_STATUS_BEFORE = 0;
     private static final int BUTTON_STATUS_AFTER = 100;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +52,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         poetry = new StringBuilder();
         initView();
         initButtonStatus();
-        queryPoetry(number);
+        queryPoetry(number);//查询并设置回显
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("");
+        setSupportActionBar(toolbar);
+        toolbar.setNavigationIcon(R.mipmap.ic_action_dehaze);
+        toolbar.setOnMenuItemClickListener(new MyMenuItemClickListener());
         setButtonOnClickListener();
     }
 
@@ -52,6 +65,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onStop() {
         super.onStop();
         finish();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
     }
 
     //初始化控件
@@ -177,7 +196,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.button_4:
                 String str4 = btn_4.getText().toString();
-                if (btn_4.getProgress() == BUTTON_STATUS_BEFORE){
+                if (btn_4.getProgress() == BUTTON_STATUS_BEFORE) {
                     btn_4.setProgress(BUTTON_STATUS_AFTER);
                     poetry.append(str4);
                     tv_poetry.setText(poetry);
@@ -185,7 +204,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.button_5:
                 String str5 = btn_5.getText().toString();
-                if(btn_5.getProgress() == BUTTON_STATUS_BEFORE){
+                if (btn_5.getProgress() == BUTTON_STATUS_BEFORE) {
                     btn_5.setProgress(BUTTON_STATUS_AFTER);
                     poetry.append(str5);
                     tv_poetry.setText(poetry);
@@ -193,7 +212,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.button_6:
                 String str6 = btn_6.getText().toString();
-                if (btn_6.getProgress() == BUTTON_STATUS_BEFORE){
+                if (btn_6.getProgress() == BUTTON_STATUS_BEFORE) {
                     btn_6.setProgress(BUTTON_STATUS_AFTER);
                     poetry.append(str6);
                     tv_poetry.setText(poetry);
@@ -201,7 +220,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.button_7:
                 String str7 = btn_7.getText().toString();
-                if(btn_7.getProgress() == BUTTON_STATUS_BEFORE){
+                if (btn_7.getProgress() == BUTTON_STATUS_BEFORE) {
                     btn_7.setProgress(BUTTON_STATUS_AFTER);
                     poetry.append(str7);
                     tv_poetry.setText(poetry);
@@ -209,7 +228,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.button_8:
                 String str8 = btn_8.getText().toString();
-                if(btn_8.getProgress() == BUTTON_STATUS_BEFORE){
+                if (btn_8.getProgress() == BUTTON_STATUS_BEFORE) {
                     btn_8.setProgress(BUTTON_STATUS_AFTER);
                     poetry.append(str8);
                     tv_poetry.setText(poetry);
@@ -217,7 +236,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.button_9:
                 String str9 = btn_9.getText().toString();
-                if(btn_9.getProgress() == BUTTON_STATUS_BEFORE){
+                if (btn_9.getProgress() == BUTTON_STATUS_BEFORE) {
                     btn_9.setProgress(BUTTON_STATUS_AFTER);
                     poetry.append(str9);
                     tv_poetry.setText(poetry);
@@ -291,5 +310,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn_9.setProgress(0);
         reset.setProgress(0);
         submit.setProgress(0);
+    }
+
+    class MyMenuItemClickListener implements Toolbar.OnMenuItemClickListener {
+
+        @Override
+        public boolean onMenuItemClick(MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.item_first:
+                    Toast.makeText(MainActivity.this, "first", Toast.LENGTH_SHORT).show();
+                    break;
+                case R.id.item_second:
+                    Toast.makeText(MainActivity.this, "second", Toast.LENGTH_SHORT).show();
+                    break;
+                default:
+                    break;
+            }
+            return true;
+        }
     }
 }

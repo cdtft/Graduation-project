@@ -55,4 +55,5 @@ public class RankActivity extends AppCompatActivity{
         super.onStop();
         finish();
     }
+
 }

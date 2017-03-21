@@ -28,7 +28,7 @@ public class VoiceActivity extends AppCompatActivity {
             case R.id.voice_imageView_adb:
                 Intent toMain = new Intent(VoiceActivity.this, MainActivity.class);
                 startActivity(toMain);
-                overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.fade_out);
+                overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
                 break;
             case R.id.voice_imageView_add:
                 Intent toRank = new Intent(VoiceActivity.this, RankActivity.class);
@@ -50,4 +50,5 @@ public class VoiceActivity extends AppCompatActivity {
         super.onStop();
         finish();
     }
+
 }
