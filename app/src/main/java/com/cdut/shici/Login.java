@@ -3,6 +3,7 @@ package com.cdut.shici;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.*;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 
@@ -37,7 +38,7 @@ public class Login extends AppCompatActivity{
 
     @OnClick(R.id.btn_login)
     public void redirect(){
-        Intent toMe = new Intent(Login.this, MeActivity.class);
+        Intent toMe = new Intent(Login.this,FragmentActivity.class);
         Login.this.startActivity(toMe);
     }
 

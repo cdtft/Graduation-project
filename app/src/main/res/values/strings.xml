@@ -3,4 +3,7 @@
     <string name="app_9">中国古诗词猜猜猜</string>
     <string name="main_item_first">first</string>
     <string name="main_item_second">second</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
