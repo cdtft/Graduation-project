@@ -46,7 +46,10 @@ public class FragmentActivity extends AppCompatActivity {
 
     public void initView() {
         mFragmentPagerAdapter = new MyFragmentPagerAdapter(getSupportFragmentManager());
+
         mViewPager.setAdapter(mFragmentPagerAdapter);
+        mViewPager.setCurrentItem(0);
+        mViewPager.setOffscreenPageLimit(0);
         mTabLayout.setupWithViewPager(mViewPager);
         game = mTabLayout.getTabAt(FRAGMENT_GAME);
         voice = mTabLayout.getTabAt(FRAGMENT_VOICE);

@@ -2,6 +2,7 @@ package com.cdut.shici.fragment;
 
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,6 +26,8 @@ import cn.bmob.v3.datatype.BmobQueryResult;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.SQLQueryListener;
 
+
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -46,7 +49,8 @@ public class Game extends Fragment {
 
     private Poetry poetryBean;
     private StringBuilder poetry = new StringBuilder();
-    private Integer number = 1;
+    private static Integer initNumber = 1;
+    private static Integer number;
     private String word9;
     private static final int BUTTON_STATUS_BEFORE = 0;
     private static final int BUTTON_STATUS_AFTER = 100;
@@ -56,6 +60,12 @@ public class Game extends Fragment {
         // Required empty public constructor
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        //Bmob.initialize(getContext(), "85de6ff456a4d4331d15542f8a3b4bf9");
+        //queryPoetry(number);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -64,11 +74,12 @@ public class Game extends Fragment {
         Bmob.initialize(getContext(), "85de6ff456a4d4331d15542f8a3b4bf9");
         ButterKnife.bind(this, view);
         initButtonStatus();
-        queryPoetry(number);
+        queryPoetry(initNumber);
         return view;
     }
 
-    private void queryPoetry(Integer n) {
+
+    private void queryPoetry(Integer n){
         String bql = "select * from Poetry where number = ?";
         new BmobQuery<Poetry>().doSQLQuery(bql, new SQLQueryListener<Poetry>() {
             @Override
@@ -80,7 +91,6 @@ public class Game extends Fragment {
                 }
             }
         }, n);
-        number = number + 1;
     }
 
     private void initData(Poetry poetryBean){
@@ -223,7 +233,7 @@ public class Game extends Fragment {
                 boolean isRight = checkData();
                 if (isRight) {
                     submit.setProgress(100);
-                    queryPoetry(number);
+                    queryPoetry(poetryBean.getNumber()+1);
                     tv_poetry.setText("");
                     poetry.delete(0, poetry.length());
                     //TODO 重新初始化按钮状态
@@ -251,4 +261,9 @@ public class Game extends Fragment {
         }
     }
 
+    @Override
+    public void onStop() {
+        super.onStop();
+
+    }
 }

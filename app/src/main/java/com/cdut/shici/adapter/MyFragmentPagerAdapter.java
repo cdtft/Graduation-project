@@ -50,4 +50,6 @@ public class MyFragmentPagerAdapter extends FragmentPagerAdapter {
     public CharSequence getPageTitle(int position) {
         return mTitle[position];
     }
+
+
 }
