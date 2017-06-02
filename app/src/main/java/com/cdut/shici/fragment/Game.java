@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.cdut.shici.R;
 import com.cdut.shici.javabean.Poetry;
+import com.cdut.shici.javabean.User;
 import com.dd.CircularProgressButton;
 
 import java.util.ArrayList;
@@ -22,10 +23,11 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.bmob.v3.Bmob;
 import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.datatype.BmobQueryResult;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.SQLQueryListener;
-
+import cn.bmob.v3.listener.UpdateListener;
 
 
 /**
@@ -49,7 +51,7 @@ public class Game extends Fragment {
 
     private Poetry poetryBean;
     private StringBuilder poetry = new StringBuilder();
-    private static Integer initNumber = 1;
+    private static Integer initNumber;
     private static Integer number;
     private String word9;
     private static final int BUTTON_STATUS_BEFORE = 0;
@@ -74,6 +76,8 @@ public class Game extends Fragment {
         Bmob.initialize(getContext(), "85de6ff456a4d4331d15542f8a3b4bf9");
         ButterKnife.bind(this, view);
         initButtonStatus();
+        User userInfo = BmobUser.getCurrentUser(User.class);
+        initNumber = userInfo.getCurrent();
         queryPoetry(initNumber);
         return view;
     }
@@ -234,6 +238,7 @@ public class Game extends Fragment {
                 if (isRight) {
                     submit.setProgress(100);
                     queryPoetry(poetryBean.getNumber()+1);
+                    updateCurrent();
                     tv_poetry.setText("");
                     poetry.delete(0, poetry.length());
                     //TODO 重新初始化按钮状态
@@ -259,6 +264,21 @@ public class Game extends Fragment {
             default:
                 break;
         }
+    }
+
+    public void updateCurrent(){
+        User bmobUser = BmobUser.getCurrentUser(User.class);
+        bmobUser.setCurrent(initNumber+1);
+        bmobUser.update(new UpdateListener() {
+            @Override
+            public void done(BmobException e) {
+                if(e==null){
+
+                }else{
+
+                }
+            }
+        });
     }
 
     @Override

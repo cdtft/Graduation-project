@@ -81,29 +81,12 @@ public class Login extends AppCompatActivity {
                 }
             }
         });
-
-        /*String bql = "select * from _User where username = ? and password = ?";
-        new BmobQuery<User>().doSQLQuery(bql, new SQLQueryListener<User>() {
-            @Override
-            public void done(BmobQueryResult<User> bmobQueryResult, BmobException e) {
-                if (e == null) {
-                    List<User> list = bmobQueryResult.getResults();
-                    user = list.get(0);
-                }
-            }
-        }, username, password);*/
-        /*if(user != null){
-            Intent intent = new Intent(Login.this, FragmentActivity.class);
-            startActivity(intent);
-        }*/
-
-
     }
 
     @OnClick(R.id.link_signup)
     public void toRegister() {
-        /*Intent intent = new Intent(Login.this, Register.class);
-        startActivityForResult(intent, 1);*/
+        Intent intent = new Intent(Login.this, Register.class);
+        startActivity(intent);
     }
 
     @Override
